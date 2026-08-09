@@ -21,10 +21,20 @@ interested in low-level programming, systems and security.
 
 ---
 
+### Languages
+
+![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![x86 asm](https://img.shields.io/badge/x86%20asm-525252?style=for-the-badge&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![MATLAB](https://img.shields.io/badge/MATLAB-FF6F00?style=for-the-badge&logo=mathworks&logoColor=white)
+![Bash](https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnubash&logoColor=white)
+
 ### Tools
 
-`C` · `Java` · `x86 Assembly` · `Python` · `MATLAB` · `Linux` · `Git` · `AWS`
-
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ-000000?style=for-the-badge&logo=intellijidea&logoColor=white)
 ---
 
-📫 Reach me at [LinkedIn](https://linkedin.com/in/your-profile) · [email](mailto:your@email.com)
+📫 Reach me at [LinkedIn](https://www.linkedin.com/in/lupsalexandra33/) · [email](mailto:alexandralupsa5@gmail.com)
