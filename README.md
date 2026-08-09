@@ -22,7 +22,7 @@
 | [mini-shell](https://github.com/lupsalexandra33/mini-shell) | Bash-like shell with pipes, redirection and job control | C, POSIX syscalls |
 | [browser-simulation](https://github.com/lupsalexandra33/browser-simulation) | Browser with tabs and history, on linked lists and stacks | C |
 | [satellite-huffman-tree](https://github.com/lupsalexandra33/satellite-huffman-tree) | Huffman tree built with a min-heap, with encoding, LCA and distance queries | C |
-| [numerical-methods](https://github.com/lupsalexandra33/numerical-methods) | Markov chains, neural networks, FFT, splines, SVD | MATLAB |
+| [numerical-methods-coursework](https://github.com/lupsalexandra33/numerical-methods-coursework) | Markov chains, neural networks, FFT, splines, SVD | MATLAB |
 | [asm-coursework](https://github.com/lupsalexandra33/asm-coursework) | Low-level algorithms called from C | x86 assembly, NASM |
 
 ---
