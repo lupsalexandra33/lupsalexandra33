@@ -9,6 +9,26 @@
 
 </div>
 
+### Open source
+
+**[Unikraft](https://github.com/unikraft)** - open-source unikernel SDK
+
+**[catalog-core #91](https://github.com/unikraft/catalog-core/pull/91)** - *in review* - `ruby-hello`
+catalog application with Firecracker support (475 LOC, 13 files). Closes
+[#25](https://github.com/unikraft/catalog-core/issues/25).
+
+- Root-caused a build failure open since 2021: `lib-ruby` fetches a GitHub branch archive that ships
+  `configure.ac` but neither the generated `configure` nor `tool/config.guess` / `tool/config.sub`,
+  so `autoconf` regenerates the script and the build then aborts on the missing auxiliary files.
+  Proposed fetching the official release tarball from `cache.ruby-lang.org` instead, which ships all three.
+- Identified an OpenSSL 3.0 incompatibility in Ruby 2.6's `ext/openssl`, where
+  `-Werror=deprecated-declarations` breaks the host build on any distro shipping OpenSSL 3.0.
+- Surfaced two further blocking gaps in the Unikraft core: a missing `sys/prctl.h` and undefined
+  `idtype_t` / `siginfo_t` in `libposix-process`'s newlib layer.
+- Following discussion with maintainers, the integration is being retargeted to Ruby 3.4 on musl.
+
+**Next up:** porting `lib-ruby` to Ruby 3.4 and musl, as agreed with the maintainers.
+
 ### Currently working on
 
 - **[container-vuln-scanner](https://github.com/lupsalexandra33/container-vuln-scanner)** - *in progress*
