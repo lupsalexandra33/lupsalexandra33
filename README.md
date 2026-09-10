@@ -27,7 +27,7 @@ catalog application with Firecracker support (475 LOC, 13 files). Closes
   `idtype_t` / `siginfo_t` in `libposix-process`'s newlib layer.
 - Following discussion with maintainers, the integration is being retargeted to Ruby 3.4 on musl.
 
-**Next up:** porting `lib-ruby` to Ruby 3.4 and musl, as agreed with the maintainers.
+**Next up:** porting `lib-ruby` to Ruby 4.0.6 and musl, as agreed with the maintainers.
 
 ### Currently working on
 
