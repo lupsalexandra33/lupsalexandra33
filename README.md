@@ -25,7 +25,7 @@ catalog application with Firecracker support (475 LOC, 13 files). Closes
   `-Werror=deprecated-declarations` breaks the host build on any distro shipping OpenSSL 3.0.
 - Surfaced two further blocking gaps in the Unikraft core: a missing `sys/prctl.h` and undefined
   `idtype_t` / `siginfo_t` in `libposix-process`'s newlib layer.
-- Following discussion with maintainers, the integration is being retargeted to Ruby 3.4 on musl.
+- Following discussion with maintainers, the integration is being retargeted to Ruby 4.0.6 on musl.
 
 **Next up:** porting `lib-ruby` to Ruby 4.0.6 and musl, as agreed with the maintainers.
 
