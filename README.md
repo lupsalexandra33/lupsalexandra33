@@ -4,6 +4,7 @@
 
 *Computer Engineering student at Politehnica University of Bucharest, mostly interested in low-level programming, systems and security.*
 
+[![Portfolio](https://img.shields.io/badge/PORTFOLIO-F3A6C6?style=for-the-badge&logo=github&logoColor=black)](https://lupsalexandra33.github.io)
 [![Email](https://img.shields.io/badge/EMAIL-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:alexandralupsa5@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LINKEDIN-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lupsalexandra33/)
 
