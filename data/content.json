@@ -79,7 +79,7 @@
     ["2025", "Unikraft catalog", "GCC 15.2 C++ HTTP server and Hello World · merged", false],
     ["2025", "async-web-server", "single-threaded HTTP/1.1 server in C with epoll and zero-copy sendfile", false],
     ["2025", "chess-game", "chess in Java Swing with user accounts and saved games", false],
-    ["2025", "SnugglePaws", "pet adoption platform in Flask and MySQL", false],
+    ["2025", "SnugglePaws", "pet adoption platform in Flask and MySQL", true],
     ["2025", "Coursework in C", "mini-shell, browser-simulation, satellite-huffman-tree", false],
     ["2025", "Coursework in asm, MATLAB", "asm-coursework, numerical-methods-coursework", false],
     ["2024", "Politehnica Bucharest", "started the B.Sc. in Computer Science at ACS", false]

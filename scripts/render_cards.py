@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Render the profile README cards into cards/.
 
-Pink on white in every GitHub theme, set in Geist, with halftone dots for data and 1-bit dithered art.
+Pink on black in every GitHub theme, set in Geist, with halftone dots for data and 1-bit dithered art.
 GitHub shows SVGs through <img>, so fonts and bitmaps are embedded as data URIs.
 """
 import base64
@@ -28,9 +28,9 @@ DAYS = DATA["days"]
 TOTAL = DATA["total"]
 
 W, GAP, R, PAD = 880, 12, 12, 32
-THEME = dict(surface="#ffffff", line="#f9d9e7", ink="#d6186c", soft="#c0266f", muted="#b8507f",
-             faint="#fbdfeb", accent="#d6186c", dot="#f283b5", hot="#d6186c",
-             name=("#ec5f9f", "#d6186c"))
+THEME = dict(surface="#000000", line="#3d1529", ink="#ff6eb4", soft="#f291c2", muted="#c9709b",
+             faint="#2b1220", tint="#1c0912", accent="#ff4fa3", on_accent="#000000", dot="#b83d7c", hot="#ff4fa3",
+             name=("#ffa3d0", "#ff2e93"))
 FONT_FILES = {
     "s4": ("Geist", 400, "Geist-Regular.woff2"),
     "s5": ("Geist", 500, "Geist-Medium.woff2"),
@@ -71,6 +71,15 @@ def wrap(s, key, size, width):
         else:
             line = trial
     return lines + ([line] if line else [])
+
+
+def balanced(s, key, size, width):
+    """Wrap to the fewest lines, then narrow the measure so the last line is not a lone word."""
+    lines = wrap(s, key, size, width)
+    while len(lines) > 1 and width > 40 and len(wrap(s, key, size, width - 4)) == len(lines):
+        width -= 4
+        lines = wrap(s, key, size, width)
+    return lines
 
 
 def text(x, y, s, key, size, fill, anchor="start", ls=None):
@@ -163,15 +172,16 @@ def name_points(lines, x, y_top, target_width, pitch=3.5, scale=3):
 
 
 def button_icon(key, cx, cy):
-    white = 'stroke="#ffffff" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"'
+    color = THEME["on_accent"]
+    line = f'stroke="{color}" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"'
     if key == "portfolio":
-        return (f'<circle cx="{cx}" cy="{cy}" r="11" {white}/><ellipse cx="{cx}" cy="{cy}" rx="4.6" ry="11" {white}/>'
-                f'<path d="M{cx - 11} {cy}h22" {white}/>')
+        return (f'<circle cx="{cx}" cy="{cy}" r="11" {line}/><ellipse cx="{cx}" cy="{cy}" rx="4.6" ry="11" {line}/>'
+                f'<path d="M{cx - 11} {cy}h22" {line}/>')
     if key == "linkedin":
-        return (f'<rect x="{cx - 11.5}" y="{cy - 11.5}" width="23" height="23" rx="4" fill="#ffffff"/>'
+        return (f'<rect x="{cx - 11.5}" y="{cy - 11.5}" width="23" height="23" rx="4" fill="{color}"/>'
                 + text(cx, cy + 6.2, "in", "s6", 16, THEME["accent"], anchor="middle", ls=-0.4))
-    return (f'<rect x="{cx - 12.5}" y="{cy - 9}" width="25" height="18" rx="2.5" {white}/>'
-            f'<path d="M{cx - 12} {cy - 7.5}L{cx} {cy + 1.5}L{cx + 12} {cy - 7.5}" {white}/>')
+    return (f'<rect x="{cx - 12.5}" y="{cy - 9}" width="25" height="18" rx="2.5" {line}/>'
+            f'<path d="M{cx - 12} {cy - 7.5}L{cx} {cy + 1.5}L{cx + 12} {cy - 7.5}" {line}/>')
 
 
 def hero(t):
@@ -201,7 +211,7 @@ def hero(t):
         cx = x + width / 2
         body = (shared + f'<rect x="{x}" y="{top}" width="{width}" height="{height}" rx="10" fill="{t["accent"]}"/>'
                 + button_icon(key, round(cx, 2), top + 37)
-                + text(cx, top + 75, title, "s5", 12.5, "#ffffff", anchor="middle"))
+                + text(cx, top + 75, title, "s5", 12.5, t["on_accent"], anchor="middle"))
         write(f"hero-{key}.svg", svg(slice_w, h + GAP, body, ["s5", "s6", "m4"], title, view_x=slice_x))
 
 
@@ -490,9 +500,9 @@ def see_more(t):
     arrow = 10
     x = (W - measure(title, "s5", size) - 8 - arrow) / 2
     ax, cy = x + measure(title, "s5", size) + 8, h / 2
-    stroke = 'stroke="#ffffff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"'
+    stroke = f'stroke="{t["on_accent"]}" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"'
     body = (f'<rect width="{W}" height="{h}" rx="{R}" fill="{t["accent"]}"/>'
-            + text(x, cy + cap("s5", size) / 2, title, "s5", size, "#ffffff", ls=-0.1)
+            + text(x, cy + cap("s5", size) / 2, title, "s5", size, t["on_accent"], ls=-0.1)
             + f'<path d="M{ax:.2f} {cy + 5}L{ax + arrow:.2f} {cy - 5}M{ax + 2:.2f} {cy - 5}H{ax + arrow:.2f}V{cy + 3}" {stroke}/>')
     write("see-more.svg", svg(W, h + GAP, body, ["s5"], "See more: all repositories"))
 
@@ -548,28 +558,56 @@ def orgs(t):
 def log(t):
     rows = CONTENT["log"]
     y_title = PAD + cap("s5", 19)
-    step, top = 34, y_title + 42
-    h = int(round(top + (len(rows) - 1) * step + PAD))
-    note = "projects and hackathons, newest first"
-    body = [card(0, W, h, t), text(PAD, y_title, "Log", "s5", 19, t["ink"], ls=-0.3),
-            label(W - PAD, y_title, note, t, anchor="end")]
-    key_x = W - PAD - measure(note.upper(), "m4", 10.5, 1.2) - 96
-    body.append(f'<circle cx="{key_x:.2f}" cy="{y_title - 3.5:.2f}" r="3.5" fill="{t["accent"]}"/>')
-    body.append(label(key_x + 10, y_title, "hackathon", t))
-    last = None
-    for i, (yr, name, desc, hack) in enumerate(rows):
-        y = top + i * step
-        body.append(f'<line x1="{PAD}" x2="{W - PAD}" y1="{y - 22.5}" y2="{y - 22.5}" stroke="{t["line"]}"/>')
-        if yr != last:
-            body.append(text(PAD, y, yr, "m4", 11.5, t["muted"]))
-            last = yr
-        nx = PAD + 72
-        if hack:
-            body.append(f'<circle cx="{nx - 13}" cy="{y - 4.5}" r="3.5" fill="{t["accent"]}"/>')
-        body.append(text(nx, y, name, "s5", 14, t["ink"]))
-        body.append(text(nx + 220, y, desc, "s4", 13, t["muted"]))
+    rail, tile_h, row_h, section_gap = 104, 64, 72, 34
+    spine = PAD + rail + 18
+    left = spine + 22
+    column_gap = 8
+    cw = (W - PAD - left - column_gap) / 2
+    years = {}
+    for row in rows:
+        years.setdefault(row[0], []).append(row)
+
+    body = [text(PAD, y_title, "Log", "s5", 19, t["ink"], ls=-0.3),
+            label(W - PAD, y_title, "projects and hackathons, newest first", t, anchor="end")]
+    defs = (f'<linearGradient id="yr" gradientUnits="userSpaceOnUse" x1="{PAD}" x2="{PAD + rail}" y1="0" y2="0">'
+            f'<stop offset="0" stop-color="{t["name"][0]}"/><stop offset="1" stop-color="{t["name"][1]}"/>'
+            '</linearGradient>')
+    y = y_title + 26
+    for index, (year, items) in enumerate(years.items()):
+        section_h = math.ceil(len(items) / 2) * row_h - (row_h - tile_h)
+        if index:
+            body.append(f'<line x1="{PAD}" x2="{W - PAD}" y1="{y - section_gap / 2:.1f}" '
+                        f'y2="{y - section_gap / 2:.1f}" stroke="{t["line"]}"/>')
+        points, year_h = name_points([year], PAD, y, rail, pitch=2.4)
+        body.append(dots(points, "url(#yr)"))
+        count = f'{len(items)} {"entry" if len(items) == 1 else "entries"}'
+        body.append(label(PAD, y + year_h + 8, count, t))
+        steps = max(int(section_h / 6), 1)
+        body.append(dots([(spine, y + i * 6 + 3, .5 + 1.5 * (1 - i / steps)) for i in range(steps)], t["dot"]))
+
+        for j, (_, name, desc, hack) in enumerate(items):
+            x = left + (j % 2) * (cw + column_gap)
+            top = y + (j // 2) * row_h
+            fill, stroke = (t["tint"], t["dot"]) if hack else ("none", t["line"])
+            body.append(f'<rect x="{x + .5:.2f}" y="{top + .5:.2f}" width="{cw - 1:.2f}" height="{tile_h - 1}" '
+                        f'rx="8" fill="{fill}" stroke="{stroke}"/>')
+            body.append(text(x + 13, top + 22, name, "s5", 14, t["ink"], ls=-0.1))
+            what, _, where = desc.partition(" · ")
+            lines = [(what, t["soft"] if hack else t["muted"]), (where, t["accent"])] if where else [
+                (line, t["soft"] if hack else t["muted"]) for line in balanced(desc, "s4", 12, cw - 26)]
+            for k, (line, color) in enumerate(lines[:2]):
+                body.append(text(x + 13, top + 39 + k * 15, line, "s4", 12, color))
+            if hack:
+                pill = measure("HACKATHON", "m4", 9, 0.8) + 12
+                pill_x = x + cw - 9 - pill
+                body.append(f'<rect x="{pill_x:.2f}" y="{top + 9}" width="{pill:.2f}" height="16" rx="8" '
+                            f'fill="{t["accent"]}"/>')
+                body.append(text(pill_x + pill / 2, top + 20.2, "HACKATHON", "m4", 9, t["on_accent"],
+                                 anchor="middle", ls=0.8))
+        y += section_h + section_gap
+    h = int(round(y - section_gap + PAD))
     aria = "Log: " + "; ".join(f"{y} {n}: {d}" for y, n, d, _ in rows)
-    write(f"log.svg", svg(W, h + GAP, "".join(body), ["s4", "s5", "m4"], aria))
+    write(f"log.svg", svg(W, h + GAP, card(0, W, h, t) + "".join(body), ["s4", "s5", "m4"], aria, defs))
 
 
 def main():
