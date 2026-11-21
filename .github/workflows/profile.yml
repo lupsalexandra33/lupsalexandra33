@@ -1,0 +1,40 @@
+name: Profile cards
+
+# Refreshes contributions and re-renders cards/*.svg once a day.
+# Needs a METRICS_TOKEN secret with read:user, so private contributions stay counted.
+# Without it the job skips the refresh and the existing cards stay as they are.
+
+"on":
+  schedule:
+    - cron: "23 4 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.METRICS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        if: env.GH_TOKEN != ''
+      - uses: actions/setup-python@v5
+        if: env.GH_TOKEN != ''
+        with:
+          python-version: "3.12"
+      - name: Render cards
+        if: env.GH_TOKEN != ''
+        run: |
+          pip install -r scripts/requirements.txt
+          python scripts/fetch_data.py
+          python scripts/render_cards.py
+      - name: Commit changes
+        if: env.GH_TOKEN != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/profile.json cards
+          git diff --cached --quiet || git commit -m "chore: refresh profile cards [skip ci]"
+          git push

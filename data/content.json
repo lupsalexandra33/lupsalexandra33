@@ -1,0 +1,115 @@
+{
+  "_comment": "Copy for the cards. Edit, then run scripts/render_cards.py. Live numbers come from data/profile.json. In the log, the 4th field marks a hackathon.",
+  "name": ["Alexandra", "Lupșa"],
+  "tagline": "I like understanding software all the way down, from C and assembly to operating systems.",
+  "study": "CS @ Politehnica Bucharest",
+  "place": "Bucharest, RO",
+  "focus": "Systems · Security · Open source",
+  "now": "Contributing to Unikraft · Peer mentor at CDL",
+  "tiles": [
+    {
+      "label": "Open source",
+      "value": "5 merged",
+      "text": "Upstream PRs in Unikraft and ROSEdu, including the Ruby 4.0.6 port to musl."
+    },
+    {
+      "label": "Hackathons",
+      "value": "4 so far",
+      "linked": false,
+      "text": "BEST Hackathon, Innovation Labs, SmartHack and UiPath Future Forward."
+    },
+    {
+      "label": "Finalist",
+      "value": "17 of 127",
+      "text": "Zattify reached the Innovation Labs finals. I helped build it and pitched it."
+    }
+  ],
+  "projects": [
+    {
+      "id": "ruby",
+      "name": "lib-ruby · catalog-core",
+      "lang": "C",
+      "tag": "Unikraft · merged",
+      "pitch": "Ported Ruby 4.0.6 to musl, traced why the old build had failed since 2021, and added a ruby-hello app that runs on Firecracker."
+    },
+    {
+      "id": "scanner",
+      "name": "container-vuln-scanner",
+      "lang": "Go",
+      "tag": "Team of 3 · 2026",
+      "pitch": "Works out what is true when container scanners disagree: finding correlation, confidence scores, policy checks and replayable scans."
+    },
+    {
+      "id": "wattsentry",
+      "name": "WattSentry",
+      "lang": "Python",
+      "tag": "SmartHack · Nov 2026",
+      "pitch": "Forecasting and control for rooftop solar, batteries, wind farms and the grid. I built the flexibility and O&M panels and the overview UI."
+    },
+    {
+      "id": "audiobolt",
+      "name": "AudioBolt",
+      "lang": "Python",
+      "tag": "UiPath Future Forward · Nov 2026",
+      "pitch": "Finds where a phone recording was made from the planes you can barely hear in it. I built the evidence map, the web export and the pitch."
+    },
+    {
+      "id": "server",
+      "name": "async-web-server",
+      "lang": "C",
+      "tag": "Linux · epoll · libaio",
+      "pitch": "Single-threaded HTTP/1.1 server: an epoll event loop, zero-copy sendfile, Linux native AIO and a state machine for every connection."
+    },
+    {
+      "id": "design",
+      "name": "ilabsro-design",
+      "lang": "Claude plugin",
+      "tag": "Innovation Labs · v0.9.0",
+      "pitch": "17 skills for websites, decks, visuals and Reels on one shared design system, with a 10-skill Instagram companion plugin."
+    },
+    {
+      "id": "zattify",
+      "name": "Zattify",
+      "lang": "TypeScript",
+      "tag": "Innovation Labs finalist · 2026",
+      "pitch": "Virtual power plant platform on real-time smart meter data. I worked on the implementation and pitched it all the way to the finals."
+    },
+    {
+      "id": "ctf",
+      "name": "ctf-writeups",
+      "lang": "Python",
+      "tag": "Security Summer School v13",
+      "pitch": "Writeups and solve scripts for binary exploitation, shellcode and forensics challenges, using GDB, Ghidra and pwntools."
+    }
+  ],
+  "stack": [
+    ["Languages", ["C", "C++", "Go", "Python", "Java", "x86 asm", "Bash", "SQL", "MATLAB"]],
+    ["Systems", ["Linux", "POSIX", "Unikraft", "Firecracker", "Docker", "AWS"]],
+    ["Tools", ["Git", "GitHub Actions", "Make", "Autotools", "MySQL", "Flask", "OpenCV", "NumPy"]]
+  ],
+  "orgs": [
+    {"id": "unikraft", "login": "unikraft", "name": "Unikraft", "role": "Open source contributions"},
+    {"id": "rosedu", "login": "rosedu", "name": "ROSEdu", "role": "Peer mentor at CDL"},
+    {"id": "ilabs", "login": "Innovation-Labs-Romania", "name": "Innovation Labs", "role": "Junior Ambassador"}
+  ],
+  "log": [
+    ["2026", "AudioBolt", "audio geolocation from aircraft Doppler · UiPath Future Forward", true],
+    ["2026", "WattSentry", "distributed-energy forecasting and control · SmartHack", true],
+    ["2026", "ilabsro-design", "Claude design plugin, 17 skills, now v0.9.0 · Innovation Labs", false],
+    ["2026", "lib-ruby · catalog-core", "Ruby 4.0.6 on musl, ruby-hello on Firecracker · Unikraft, merged", false],
+    ["2026", "ilabsro-instagram", "companion plugin for hooks, captions and content plans", false],
+    ["2026", "container-vuln-scanner", "correlates findings across scanners · team of 3", false],
+    ["2026", "document-scanner", "OCR pipeline with perspective correction and field extraction", false],
+    ["2026", "ctf-writeups", "binary exploitation, forensics and network security", false],
+    ["2026", "workshop-github", "refactored the Git & GitHub workshop · ROSEdu, merged", false],
+    ["2026", "Zattify", "virtual power plant · Innovation Labs finalist, 17 of 127 teams", true],
+    ["2026", "BrewSpot", "Python CLI that scrapes and manages cafes", false],
+    ["2025", "Unikraft catalog", "GCC 15.2 C++ HTTP server and Hello World · merged", false],
+    ["2025", "async-web-server", "single-threaded HTTP/1.1 server in C with epoll and zero-copy sendfile", false],
+    ["2025", "chess-game", "chess in Java Swing with user accounts and saved games", false],
+    ["2025", "SnugglePaws", "pet adoption platform in Flask and MySQL", false],
+    ["2025", "Coursework in C", "mini-shell, browser-simulation, satellite-huffman-tree", false],
+    ["2025", "Coursework in asm, MATLAB", "asm-coursework, numerical-methods-coursework", false],
+    ["2024", "Politehnica Bucharest", "started the B.Sc. in Computer Science at ACS", false]
+  ]
+}
