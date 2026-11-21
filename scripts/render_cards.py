@@ -485,6 +485,18 @@ def projects(t):
         write(f"project-{key}.svg", svg(W / 2, h + GAP, "".join(body), ["s4", "s6", "m4"], aria, clip))
 
 
+def see_more(t):
+    h, title, size = 56, "See more", 16
+    arrow = 10
+    x = (W - measure(title, "s5", size) - 8 - arrow) / 2
+    ax, cy = x + measure(title, "s5", size) + 8, h / 2
+    stroke = 'stroke="#ffffff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"'
+    body = (f'<rect width="{W}" height="{h}" rx="{R}" fill="{t["accent"]}"/>'
+            + text(x, cy + cap("s5", size) / 2, title, "s5", size, "#ffffff", ls=-0.1)
+            + f'<path d="M{ax:.2f} {cy + 5}L{ax + arrow:.2f} {cy - 5}M{ax + 2:.2f} {cy - 5}H{ax + arrow:.2f}V{cy + 3}" {stroke}/>')
+    write("see-more.svg", svg(W, h + GAP, body, ["s5"], "See more: all repositories"))
+
+
 def stack(t):
     y_title = PAD + cap("s5", 19)
     size, chip_h, gap, row_gap = 12, 26, 7, 8
@@ -568,6 +580,7 @@ def main():
     tiles(t)
     section_title(t, "work", "Selected work", f'{len(CONTENT["projects"])} projects')
     projects(t)
+    see_more(t)
     stack(t)
     orgs(t)
     log(t)

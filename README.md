@@ -8,8 +8,7 @@
 <img src="./cards/title-work.svg" width="100%" alt="Selected work" /><br>
 <a href="https://github.com/unikraft/lib-ruby/pull/4"><img src="./cards/project-ruby.svg" width="50%" alt="lib-ruby and catalog-core: Ruby 4.0.6 on Unikraft" /></a><a href="https://github.com/lupsalexandra33/container-vuln-scanner"><img src="./cards/project-scanner.svg" width="50%" alt="container-vuln-scanner" /></a><br>
 <a href="https://github.com/Andrei9383/smarthack"><img src="./cards/project-wattsentry.svg" width="50%" alt="WattSentry" /></a><img src="./cards/project-audiobolt.svg" width="50%" alt="AudioBolt" /><br>
-<a href="https://github.com/lupsalexandra33/async-web-server"><img src="./cards/project-server.svg" width="50%" alt="async-web-server" /></a><a href="https://github.com/Innovation-Labs-Romania/ilabsro-design"><img src="./cards/project-design.svg" width="50%" alt="ilabsro-design" /></a><br>
-<a href="https://github.com/elisaarghir/Zattify"><img src="./cards/project-zattify.svg" width="50%" alt="Zattify" /></a><a href="https://github.com/lupsalexandra33/ctf-writeups"><img src="./cards/project-ctf.svg" width="50%" alt="ctf-writeups" /></a><br>
+<a href="https://github.com/lupsalexandra33?tab=repositories"><img src="./cards/see-more.svg" width="100%" alt="See more: all repositories" /></a><br>
 <img src="./cards/stack.svg" width="100%" alt="Stack: C, C++, Go, Python, Java, x86 assembly, Bash, SQL, MATLAB, Linux, Unikraft, Docker and more" /><br>
 <a href="https://github.com/unikraft"><img src="./cards/org-unikraft.svg" width="33.333%" alt="Unikraft: open source contributions" /></a><a href="https://github.com/rosedu"><img src="./cards/org-rosedu.svg" width="33.333%" alt="ROSEdu: peer mentor at CDL" /></a><a href="https://github.com/Innovation-Labs-Romania"><img src="./cards/org-ilabs.svg" width="33.333%" alt="Innovation Labs: Junior Ambassador" /></a><br>
 <img src="./cards/log.svg" width="100%" alt="The log: projects and hackathons, newest first" />

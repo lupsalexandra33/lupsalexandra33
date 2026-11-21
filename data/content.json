@@ -52,34 +52,6 @@
       "lang": "Python",
       "tag": "UiPath Future Forward · Nov 2026",
       "pitch": "Finds where a phone recording was made from the planes you can barely hear in it. I built the evidence map, the web export and the pitch."
-    },
-    {
-      "id": "server",
-      "name": "async-web-server",
-      "lang": "C",
-      "tag": "Linux · epoll · libaio",
-      "pitch": "Single-threaded HTTP/1.1 server: an epoll event loop, zero-copy sendfile, Linux native AIO and a state machine for every connection."
-    },
-    {
-      "id": "design",
-      "name": "ilabsro-design",
-      "lang": "Claude plugin",
-      "tag": "Innovation Labs · v0.9.0",
-      "pitch": "17 skills for websites, decks, visuals and Reels on one shared design system, with a 10-skill Instagram companion plugin."
-    },
-    {
-      "id": "zattify",
-      "name": "Zattify",
-      "lang": "TypeScript",
-      "tag": "Innovation Labs finalist · 2026",
-      "pitch": "Virtual power plant platform on real-time smart meter data. I worked on the implementation and pitched it all the way to the finals."
-    },
-    {
-      "id": "ctf",
-      "name": "ctf-writeups",
-      "lang": "Python",
-      "tag": "Security Summer School v13",
-      "pitch": "Writeups and solve scripts for binary exploitation, shellcode and forensics challenges, using GDB, Ghidra and pwntools."
     }
   ],
   "stack": [
